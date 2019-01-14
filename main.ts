@@ -1,11 +1,11 @@
 let groupChannelShow_Countdown_Max = 0
+let groupChannel_Int_Max = 0
 let groupChannel_Int_Min = 0
 let ledGridValueMax = 0
 let groupChannelShow_Countdown = 0
 let mode_Config_On = false
 let receivedNumberIn = 0
 let mode_Run_On = false
-let groupChannel_Int_Max = 0
 let _commentUseOnly = ""
 let groupChannel_Int = 0
 /**
@@ -26,12 +26,12 @@ let groupChannel_Int = 0
  * 
  * * DfRobot Gamepad Controller: Acrylic case can accidentally press 'x' or 'y' buttons, so use Config-Mode layer
  */
-function Before_RadioNetworkSetup__GroupChannel_UserCustomize_Setup2() {
+function Before_RadioNetworkSetup__GroupChannel_UserCustomize_Setup() {
     // User Can Change/Customize as Needed for Both RcTx
     // and BotRx
-    groupChannel_Int = groupChannel_Int_Max
+    groupChannel_Int = 25
 }
-function Before_EverythingElse__General_Setup2() {
+function Before_EverythingElse__General_Setup() {
     _commentUseOnly = "1/4 seems less reliable vs 1/2 due to system cycle"
     _commentUseOnly = "Actually, 1beat most realiable with Bot-Rx, esp during ConfigMode"
     mode_Config_On = false
@@ -59,7 +59,7 @@ input.onGesture(Gesture.TiltRight, function () {
     music.playTone(262, music.beat(BeatFraction.Half))
     music.playTone(392, music.beat(BeatFraction.Half))
 })
-function RadioNetwork_Setup() {
+function RadioNetwork_Setup2() {
     radio.setTransmitPower(7)
     radio.setGroup(groupChannel_Int)
 }
@@ -95,7 +95,7 @@ input.onGesture(Gesture.LogoDown, function () {
     music.playTone(262, music.beat(BeatFraction.Half))
     music.playTone(523, music.beat(BeatFraction.Half))
 })
-function GroupChannel_Show2() {
+function GroupChannel_Show() {
     basic.clearScreen()
     _commentUseOnly = "'groupChannel_Int' is Base-1 while 'index' and 'plot' is Base-0"
     for (let index = 0; index <= groupChannel_Int - 1; index++) {
@@ -103,8 +103,8 @@ function GroupChannel_Show2() {
     }
     basic.pause(1000)
 }
-Before_RadioNetworkSetup__GroupChannel_UserCustomize_Setup2()
-RadioNetwork_Setup()
+Before_RadioNetworkSetup__GroupChannel_UserCustomize_Setup()
+RadioNetwork_Setup2()
 basic.showIcon(IconNames.Happy)
 basic.pause(3000)
 basic.forever(function () {
@@ -249,7 +249,7 @@ basic.forever(function () {
                 }
                 if (groupChannelShow_Countdown <= 0) {
                     _commentUseOnly = "Only Call this Function once-in-a-while to prevent clobbering other graphics, thus this countdown used"
-                    GroupChannel_Show2()
+                    GroupChannel_Show()
                     groupChannelShow_Countdown = groupChannelShow_Countdown_Max
                 } else {
                     basic.showLeds(`
@@ -423,7 +423,7 @@ basic.forever(function () {
                 }
                 if (groupChannelShow_Countdown <= 0) {
                     _commentUseOnly = "Only Call this Function once-in-a-while to prevent clobbering other graphics, thus this countdown used"
-                    GroupChannel_Show2()
+                    GroupChannel_Show()
                     groupChannelShow_Countdown = groupChannelShow_Countdown_Max
                 } else {
                     basic.showLeds(`
