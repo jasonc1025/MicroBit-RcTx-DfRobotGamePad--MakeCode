@@ -1,0 +1,2656 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <variables>
+    <variable type="" id="J*fbM:[jG[sMB}1dQbwj">groupChannel_Int</variable>
+    <variable type="" id="4~p?fzYSjDY;(Zd,akYw">receivedNumberIn</variable>
+    <variable type="" id="Z-9t${Vs#2?fNod-GMTq">_commentUseOnly</variable>
+    <variable type="" id="p[W/,]~Qn;c:=W7b=Ll(">item</variable>
+    <variable type="" id="d~eK)^)AOkOR8wD7G1jv">mode_Config_On</variable>
+    <variable type="" id="EJqlxI4{)`_`GIN`*oHB">ledGridValueMax</variable>
+    <variable type="" id="undefined">receivedNumber</variable>
+    <variable type="" id="%MXln7d_cpd96X{=m69O">index</variable>
+    <variable type="" id="Er^/n)IiXbk)%x~$%*0Q">groupChannelShow_Countdown</variable>
+    <variable type="" id="5YlyCo+!Vp|IS*p[js[T">groupChannelShow_Countdown_Max</variable>
+    <variable type="" id="L}8{67ZN1Yp=CDCT8uTY">groupChannel_Int_Max</variable>
+    <variable type="" id="*q]Xu8Mxg5KCUPJ7*deJ">groupChannel_Int_Min</variable>
+    <variable type="" id="E[w[.@S5b#@nSqk[3{::">mode_Run_On</variable>
+  </variables>
+  <comment x="0" y="0" h="373" w="597">Version History
+2019-0101-0030
+* for 'tr' and 'tl', faster feedback signal
+2019-0112-1900
+* Add new 'GroupChannel_UserCustomize_Before_RadioNetworkSetup'
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </comment>
+  <comment x="1469" y="30" h="222" w="380">Important Notes
+2018-1227-1630 
+* DfRobot Gamepad Controller: Acrylic case can accidentally press 'x' or 'y' buttons, so use Config-Mode layer
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  </comment>
+  <block type="procedures_defnoreturn" x="707" y="81">
+    <field name="NAME">Before_RadioNetworkSetup__GroupChannel_UserCustomize_Setup</field>
+    <field name="PARAMS"></field>
+    <statement name="STACK">
+      <block type="variables_set">
+        <field name="VAR" id="J*fbM:[jG[sMB}1dQbwj" variabletype="">groupChannel_Int</field>
+        <comment pinned="true" h="201" w="317">User Can Change/Customize as Needed for Both RcTx and BotRx</comment>
+        <value name="VALUE">
+          <shadow type="math_number" id="lxw{x86Niy7~[i/sXpkS">
+            <field name="NUM">0</field>
+          </shadow>
+          <block type="variables_get">
+            <field name="VAR" id="L}8{67ZN1Yp=CDCT8uTY" variabletype="">groupChannel_Int_Max</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="pxt-on-start" x="632" y="242">
+    <statement name="HANDLER">
+      <block type="procedures_callnoreturn">
+        <mutation name="Before_RadioNetworkSetup__GroupChannel_UserCustomize_Setup"></mutation>
+        <field name="NAME">Before_RadioNetworkSetup__GroupChannel_UserCustomize_Setup</field>
+        <next>
+          <block type="procedures_callnoreturn">
+            <mutation name="RadioNetwork_Setup"></mutation>
+            <field name="NAME">RadioNetwork_Setup</field>
+            <next>
+              <block type="basic_show_icon">
+                <field name="i">IconNames.Happy</field>
+                <next>
+                  <block type="device_pause">
+                    <value name="pause">
+                      <shadow type="math_number">
+                        <field name="NUM">3000</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="variables_get" disabled="true" x="2557" y="419">
+    <field name="VAR" id="d~eK)^)AOkOR8wD7G1jv" variabletype="">mode_Config_On</field>
+  </block>
+  <block type="procedures_defnoreturn" x="647" y="604">
+    <field name="NAME">Before_EverythingElse__General_Setup</field>
+    <field name="PARAMS"></field>
+    <statement name="STACK">
+      <block type="variables_set">
+        <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+        <value name="VALUE">
+          <shadow type="math_number" id="V`6X8^rK|__3ShxW1%1q">
+            <field name="NUM">0</field>
+          </shadow>
+          <block type="text">
+            <field name="TEXT">1/4 seems less reliable vs 1/2 due to system cycle</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set">
+            <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+            <value name="VALUE">
+              <shadow type="math_number" id="V`6X8^rK|__3ShxW1%1q">
+                <field name="NUM">0</field>
+              </shadow>
+              <block type="text">
+                <field name="TEXT">Actually, 1beat most realiable with Bot-Rx, esp during ConfigMode</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set">
+                <field name="VAR" id="d~eK)^)AOkOR8wD7G1jv" variabletype="">mode_Config_On</field>
+                <value name="VALUE">
+                  <shadow type="math_number" id="`n(((lg7ZiGBh%[vRB)]">
+                    <field name="NUM">0</field>
+                  </shadow>
+                  <block type="logic_boolean">
+                    <field name="BOOL">FALSE</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set">
+                    <field name="VAR" id="E[w[.@S5b#@nSqk[3{::" variabletype="">mode_Run_On</field>
+                    <value name="VALUE">
+                      <shadow type="math_number" id="`n(((lg7ZiGBh%[vRB)]">
+                        <field name="NUM">0</field>
+                      </shadow>
+                      <block type="logic_boolean">
+                        <field name="BOOL">TRUE</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set">
+                        <field name="VAR" id="EJqlxI4{)`_`GIN`*oHB" variabletype="">ledGridValueMax</field>
+                        <value name="VALUE">
+                          <shadow type="math_number">
+                            <field name="NUM">4</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="variables_set">
+                            <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+                            <value name="VALUE">
+                              <shadow type="math_number" id="]/}Koa=PGJQXSX*ezdJi">
+                                <field name="NUM">0</field>
+                              </shadow>
+                              <block type="text">
+                                <field name="TEXT">Assuming each cycle is 20ms, then 20ms * 150 = 3000 ms = 3s</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set">
+                                <field name="VAR" id="5YlyCo+!Vp|IS*p[js[T" variabletype="">groupChannelShow_Countdown_Max</field>
+                                <comment pinned="true" h="120" w="160">* Was 150</comment>
+                                <value name="VALUE">
+                                  <shadow type="math_number">
+                                    <field name="NUM">5</field>
+                                  </shadow>
+                                </value>
+                                <next>
+                                  <block type="variables_set">
+                                    <field name="VAR" id="Er^/n)IiXbk)%x~$%*0Q" variabletype="">groupChannelShow_Countdown</field>
+                                    <value name="VALUE">
+                                      <shadow type="math_number" id="|Da7v+3viX|}rgm$dZ8A">
+                                        <field name="NUM">0</field>
+                                      </shadow>
+                                      <block type="variables_get">
+                                        <field name="VAR" id="5YlyCo+!Vp|IS*p[js[T" variabletype="">groupChannelShow_Countdown_Max</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_set">
+                                        <field name="VAR" id="*q]Xu8Mxg5KCUPJ7*deJ" variabletype="">groupChannel_Int_Min</field>
+                                        <value name="VALUE">
+                                          <shadow type="math_number">
+                                            <field name="NUM">1</field>
+                                          </shadow>
+                                        </value>
+                                        <next>
+                                          <block type="variables_set">
+                                            <field name="VAR" id="L}8{67ZN1Yp=CDCT8uTY" variabletype="">groupChannel_Int_Max</field>
+                                            <value name="VALUE">
+                                              <shadow type="math_number">
+                                                <field name="NUM">25</field>
+                                              </shadow>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="device_forever" x="4038" y="482">
+    <statement name="HANDLER">
+      <block type="controls_if">
+        <comment pinned="true" h="120" w="160">Toggle between 'mode_Config_On' or 'mode_RUn</comment>
+        <value name="IF0">
+          <shadow type="logic_boolean" id="*N{as8#8I!W3UQQ6hE5r">
+            <field name="BOOL">TRUE</field>
+          </shadow>
+          <block type="logic_operation">
+            <field name="OP">AND</field>
+            <value name="A">
+              <block type="gamePad_keyState">
+                <field name="button">GamerBitPin.P1</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="gamePad_keyState">
+                <field name="button">GamerBitPin.P2</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_if">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <shadow type="logic_boolean" id="GNC$KFQvm^0iQA1KZ^2B">
+                <field name="BOOL">TRUE</field>
+              </shadow>
+              <block type="variables_get">
+                <field name="VAR" id="d~eK)^)AOkOR8wD7G1jv" variabletype="">mode_Config_On</field>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="variables_set">
+                <field name="VAR" id="d~eK)^)AOkOR8wD7G1jv" variabletype="">mode_Config_On</field>
+                <value name="VALUE">
+                  <shadow type="math_number" id="!+mvm}BaNNT:@zDtg;[K">
+                    <field name="NUM">0</field>
+                  </shadow>
+                  <block type="logic_boolean">
+                    <field name="BOOL">FALSE</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="device_play_note">
+                    <value name="note">
+                      <shadow type="device_note">
+                        <field name="name">784</field>
+                      </shadow>
+                    </value>
+                    <value name="duration">
+                      <shadow type="device_beat">
+                        <field name="fraction">BeatFraction.Whole</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="device_play_note">
+                        <value name="note">
+                          <shadow type="device_note">
+                            <field name="name">659</field>
+                          </shadow>
+                        </value>
+                        <value name="duration">
+                          <shadow type="device_beat">
+                            <field name="fraction">BeatFraction.Whole</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="device_play_note">
+                            <value name="note">
+                              <shadow type="device_note">
+                                <field name="name">523</field>
+                              </shadow>
+                            </value>
+                            <value name="duration">
+                              <shadow type="device_beat">
+                                <field name="fraction">BeatFraction.Whole</field>
+                              </shadow>
+                            </value>
+                            <next>
+                              <block type="variables_set">
+                                <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+                                <value name="VALUE">
+                                  <shadow type="math_number" id="/Z3%%Q+;}?k90.JtMd*7">
+                                    <field name="NUM">0</field>
+                                  </shadow>
+                                  <block type="text">
+                                    <field name="TEXT">Switch to state only when stabilized to prevent premature trigger of other 'forever' stacks that use similar user inputs</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_set">
+                                    <field name="VAR" id="E[w[.@S5b#@nSqk[3{::" variabletype="">mode_Run_On</field>
+                                    <value name="VALUE">
+                                      <shadow type="math_number" id="!+mvm}BaNNT:@zDtg;[K">
+                                        <field name="NUM">0</field>
+                                      </shadow>
+                                      <block type="logic_boolean">
+                                        <field name="BOOL">TRUE</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="variables_set">
+                <field name="VAR" id="E[w[.@S5b#@nSqk[3{::" variabletype="">mode_Run_On</field>
+                <value name="VALUE">
+                  <shadow type="math_number" id="!+mvm}BaNNT:@zDtg;[K">
+                    <field name="NUM">0</field>
+                  </shadow>
+                  <block type="logic_boolean">
+                    <field name="BOOL">FALSE</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="device_play_note">
+                    <value name="note">
+                      <shadow type="device_note">
+                        <field name="name">523</field>
+                      </shadow>
+                    </value>
+                    <value name="duration">
+                      <shadow type="device_beat">
+                        <field name="fraction">BeatFraction.Whole</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="device_play_note">
+                        <value name="note">
+                          <shadow type="device_note">
+                            <field name="name">659</field>
+                          </shadow>
+                        </value>
+                        <value name="duration">
+                          <shadow type="device_beat">
+                            <field name="fraction">BeatFraction.Whole</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="device_play_note">
+                            <value name="note">
+                              <shadow type="device_note">
+                                <field name="name">784</field>
+                              </shadow>
+                            </value>
+                            <value name="duration">
+                              <shadow type="device_beat">
+                                <field name="fraction">BeatFraction.Whole</field>
+                              </shadow>
+                            </value>
+                            <next>
+                              <block type="variables_set">
+                                <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+                                <value name="VALUE">
+                                  <shadow type="math_number" id="/Z3%%Q+;}?k90.JtMd*7">
+                                    <field name="NUM">0</field>
+                                  </shadow>
+                                  <block type="text">
+                                    <field name="TEXT">Switch to state only when stabilized to prevent premature trigger of other 'forever' stacks that use similar user inputs</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_set">
+                                    <field name="VAR" id="d~eK)^)AOkOR8wD7G1jv" variabletype="">mode_Config_On</field>
+                                    <value name="VALUE">
+                                      <shadow type="math_number" id="!+mvm}BaNNT:@zDtg;[K">
+                                        <field name="NUM">0</field>
+                                      </shadow>
+                                      <block type="logic_boolean">
+                                        <field name="BOOL">TRUE</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="device_forever" x="5143" y="498">
+    <statement name="HANDLER">
+      <block type="controls_if">
+        <comment pinned="true" h="95" w="190">For 'mode_Run_On'</comment>
+        <value name="IF0">
+          <shadow type="logic_boolean" id=")_sGM^iq6|HA8`P=!eIN">
+            <field name="BOOL">TRUE</field>
+          </shadow>
+          <block type="variables_get">
+            <field name="VAR" id="E[w[.@S5b#@nSqk[3{::" variabletype="">mode_Run_On</field>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_if">
+            <mutation elseif="11" else="1"></mutation>
+            <value name="IF0">
+              <shadow type="logic_boolean" id="EP:_6))!]~ZAxUk2u+XD">
+                <field name="BOOL">TRUE</field>
+              </shadow>
+              <block type="logic_operation">
+                <field name="OP">AND</field>
+                <value name="A">
+                  <block type="logic_operation">
+                    <field name="OP">AND</field>
+                    <value name="A">
+                      <block type="gamePad_keyState">
+                        <field name="button">GamerBitPin.P8</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="gamePad_keyState">
+                        <field name="button">GamerBitPin.P14</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="gamePad_keyState">
+                    <field name="button">GamerBitPin.P13</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="radio_datagram_send_string">
+                <value name="msg">
+                  <shadow type="text">
+                    <field name="TEXT">fld</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="device_show_leds">
+                    <field name="LEDS">`
+        . . # . . 
+        . # # . # 
+        # # # # # 
+        . # # . # 
+        . . # . .
+        `
+                    </field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF1">
+              <block type="logic_operation">
+                <field name="OP">AND</field>
+                <value name="A">
+                  <block type="logic_operation">
+                    <field name="OP">AND</field>
+                    <value name="A">
+                      <block type="gamePad_keyState">
+                        <field name="button">GamerBitPin.P8</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="gamePad_keyState">
+                        <field name="button">GamerBitPin.P15</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="gamePad_keyState">
+                    <field name="button">GamerBitPin.P13</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO1">
+              <block type="radio_datagram_send_string">
+                <value name="msg">
+                  <shadow type="text">
+                    <field name="TEXT">frd</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="device_show_leds">
+                    <field name="LEDS">`
+        . . # . . 
+        # . # # . 
+        # # # # # 
+        # . # # . 
+        . . # . .
+        `
+                    </field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF2">
+              <block type="logic_operation">
+                <field name="OP">AND</field>
+                <value name="A">
+                  <block type="gamePad_keyState">
+                    <field name="button">GamerBitPin.P8</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="gamePad_keyState">
+                    <field name="button">GamerBitPin.P14</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO2">
+              <block type="radio_datagram_send_string">
+                <value name="msg">
+                  <shadow type="text">
+                    <field name="TEXT">fl</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="device_show_leds">
+                    <field name="LEDS">`
+        # # # . . 
+        # # . . . 
+        # . # . . 
+        . . . # . 
+        . . . . .
+        `
+                    </field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF3">
+              <block type="logic_operation">
+                <field name="OP">AND</field>
+                <value name="A">
+                  <block type="gamePad_keyState">
+                    <field name="button">GamerBitPin.P8</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="gamePad_keyState">
+                    <field name="button">GamerBitPin.P15</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO3">
+              <block type="radio_datagram_send_string">
+                <value name="msg">
+                  <shadow type="text">
+                    <field name="TEXT">fr</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="device_show_leds">
+                    <field name="LEDS">`
+        . . # # # 
+        . . . # # 
+        . . # . # 
+        . # . . . 
+        . . . . .
+        `
+                    </field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF4">
+              <block type="gamePad_keyState">
+                <field name="button">GamerBitPin.P8</field>
+              </block>
+            </value>
+            <statement name="DO4">
+              <block type="radio_datagram_send_string">
+                <value name="msg">
+                  <shadow type="text">
+                    <field name="TEXT">f</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="device_show_leds">
+                    <field name="LEDS">`
+        . . # . . 
+        . # # # . 
+        # . # . # 
+        . . # . . 
+        . . # . .
+        `
+                    </field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF5">
+              <block type="logic_operation">
+                <field name="OP">AND</field>
+                <value name="A">
+                  <block type="gamePad_keyState">
+                    <field name="button">GamerBitPin.P13</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="gamePad_keyState">
+                    <field name="button">GamerBitPin.P14</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO5">
+              <block type="radio_datagram_send_string">
+                <value name="msg">
+                  <shadow type="text">
+                    <field name="TEXT">bl</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="device_show_leds">
+                    <field name="LEDS">`
+        . . . . . 
+        . . . # . 
+        # . # . . 
+        # # . . . 
+        # # # . .
+        `
+                    </field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF6">
+              <block type="logic_operation">
+                <field name="OP">AND</field>
+                <value name="A">
+                  <block type="gamePad_keyState">
+                    <field name="button">GamerBitPin.P13</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="gamePad_keyState">
+                    <field name="button">GamerBitPin.P15</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO6">
+              <block type="radio_datagram_send_string">
+                <value name="msg">
+                  <shadow type="text">
+                    <field name="TEXT">br</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="device_show_leds">
+                    <field name="LEDS">`
+        . . . . . 
+        . # . . . 
+        . . # . # 
+        . . . # # 
+        . . # # #
+        `
+                    </field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF7">
+              <block type="gamePad_keyState">
+                <field name="button">GamerBitPin.P13</field>
+              </block>
+            </value>
+            <statement name="DO7">
+              <block type="radio_datagram_send_string">
+                <value name="msg">
+                  <shadow type="text">
+                    <field name="TEXT">b</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="device_show_leds">
+                    <field name="LEDS">`
+        . . # . . 
+        . . # . . 
+        # . # . # 
+        . # # # . 
+        . . # . .
+        `
+                    </field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF8">
+              <block type="gamePad_keyState">
+                <field name="button">GamerBitPin.P14</field>
+              </block>
+            </value>
+            <statement name="DO8">
+              <block type="radio_datagram_send_string">
+                <value name="msg">
+                  <shadow type="text">
+                    <field name="TEXT">l</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="device_show_leds">
+                    <field name="LEDS">`
+        . . # . . 
+        . # . . . 
+        # # # # # 
+        . # . . . 
+        . . # . .
+        `
+                    </field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF9">
+              <block type="gamePad_keyState">
+                <field name="button">GamerBitPin.P15</field>
+              </block>
+            </value>
+            <statement name="DO9">
+              <block type="radio_datagram_send_string">
+                <value name="msg">
+                  <shadow type="text">
+                    <field name="TEXT">r</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="device_show_leds">
+                    <field name="LEDS">`
+        . . # . . 
+        . . . # . 
+        # # # # # 
+        . . . # . 
+        . . # . .
+        `
+                    </field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF10">
+              <block type="gamePad_keyState">
+                <field name="button">GamerBitPin.P1</field>
+              </block>
+            </value>
+            <statement name="DO10">
+              <block type="radio_datagram_send_string">
+                <value name="msg">
+                  <shadow type="text">
+                    <field name="TEXT">u</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="device_show_leds">
+                    <field name="LEDS">`
+        . . # # . 
+        . . . # . 
+        . . . # . 
+        . . . # . 
+        . . . . .
+        `
+                    </field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF11">
+              <block type="gamePad_keyState">
+                <field name="button">GamerBitPin.P2</field>
+              </block>
+            </value>
+            <statement name="DO11">
+              <block type="radio_datagram_send_string">
+                <value name="msg">
+                  <shadow type="text">
+                    <field name="TEXT">d</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="device_show_leds">
+                    <field name="LEDS">`
+        . . . . . 
+        . . . . . 
+        . . . . . 
+        # # # # . 
+        # . . . .
+        `
+                    </field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="variables_set">
+                <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+                <value name="VALUE">
+                  <shadow type="math_number" id="ge!m+54G^yl=;%p63)K(">
+                    <field name="NUM">0</field>
+                  </shadow>
+                  <block type="text">
+                    <field name="TEXT">Default Condition if all the above fails</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set">
+                    <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+                    <value name="VALUE">
+                      <shadow type="math_number" id="Wc(`YL#BB,au*/c@_?+A">
+                        <field name="NUM">0</field>
+                      </shadow>
+                      <block type="text">
+                        <field name="TEXT">Default to 'Stop'</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set">
+                        <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+                        <value name="VALUE">
+                          <shadow type="math_number" id="Wc(`YL#BB,au*/c@_?+A">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="text">
+                            <field name="TEXT">Stop periodic send of 's' since overload bot-reciever</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="controls_repeat_ext">
+                            <value name="TIMES">
+                              <shadow type="math_whole_number">
+                                <field name="NUM">1</field>
+                              </shadow>
+                            </value>
+                            <statement name="DO">
+                              <block type="variables_change">
+                                <field name="VAR" id="Er^/n)IiXbk)%x~$%*0Q" variabletype="">groupChannelShow_Countdown</field>
+                                <value name="VALUE">
+                                  <shadow type="math_number">
+                                    <field name="NUM">-1</field>
+                                  </shadow>
+                                </value>
+                                <next>
+                                  <block type="controls_repeat_ext">
+                                    <value name="TIMES">
+                                      <shadow type="math_whole_number">
+                                        <field name="NUM">0</field>
+                                      </shadow>
+                                    </value>
+                                    <statement name="DO">
+                                      <block type="serial_writevalue">
+                                        <value name="name">
+                                          <shadow type="text">
+                                            <field name="TEXT">groupChannel</field>
+                                          </shadow>
+                                        </value>
+                                        <value name="value">
+                                          <shadow type="math_number" id="r5p}0RsgW_4)s_b-##XB">
+                                            <field name="NUM">0</field>
+                                          </shadow>
+                                          <block type="variables_get">
+                                            <field name="VAR" id="Er^/n)IiXbk)%x~$%*0Q" variabletype="">groupChannelShow_Countdown</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </statement>
+                                    <next>
+                                      <block type="controls_if">
+                                        <mutation else="1"></mutation>
+                                        <value name="IF0">
+                                          <shadow type="logic_boolean" id="d8C0]24XPh((NLEkzNR}">
+                                            <field name="BOOL">TRUE</field>
+                                          </shadow>
+                                          <block type="logic_compare">
+                                            <field name="OP">LTE</field>
+                                            <value name="A">
+                                              <shadow type="math_number" id="_n!^@AYJ{hfm2HrWK1Z-">
+                                                <field name="NUM">0</field>
+                                              </shadow>
+                                              <block type="variables_get">
+                                                <field name="VAR" id="Er^/n)IiXbk)%x~$%*0Q" variabletype="">groupChannelShow_Countdown</field>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <shadow type="math_number">
+                                                <field name="NUM">0</field>
+                                              </shadow>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <statement name="DO0">
+                                          <block type="variables_set">
+                                            <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+                                            <value name="VALUE">
+                                              <shadow type="math_number" id="Mb!d/q/hZu1X$It@?62?">
+                                                <field name="NUM">0</field>
+                                              </shadow>
+                                              <block type="text">
+                                                <field name="TEXT">Only Call this Function once-in-a-while to prevent clobbering other graphics, thus this countdown used</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="procedures_callnoreturn">
+                                                <mutation name="GroupChannel_Show"></mutation>
+                                                <field name="NAME">GroupChannel_Show</field>
+                                                <next>
+                                                  <block type="variables_set">
+                                                    <field name="VAR" id="Er^/n)IiXbk)%x~$%*0Q" variabletype="">groupChannelShow_Countdown</field>
+                                                    <value name="VALUE">
+                                                      <shadow type="math_number" id="s]lH$~q24+:P98)e1_NI">
+                                                        <field name="NUM">0</field>
+                                                      </shadow>
+                                                      <block type="variables_get">
+                                                        <field name="VAR" id="5YlyCo+!Vp|IS*p[js[T" variabletype="">groupChannelShow_Countdown_Max</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </statement>
+                                        <statement name="ELSE">
+                                          <block type="device_show_leds">
+                                            <field name="LEDS">`
+        . . . . . 
+        . . # . . 
+        . # . # . 
+        . . # . . 
+        . . . . .
+        `
+                                            </field>
+                                          </block>
+                                        </statement>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="device_play_note" disabled="true" x="1688" y="852">
+    <value name="note">
+      <shadow type="device_note">
+        <field name="name">262</field>
+      </shadow>
+    </value>
+    <value name="duration">
+      <shadow type="device_beat">
+        <field name="fraction">BeatFraction.Whole</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="radio_on_number" x="1715" y="930">
+    <field name="HANDLER_receivedNumber" id="undefined" variabletype="">receivedNumber</field>
+    <statement name="HANDLER">
+      <block type="variables_set">
+        <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+        <value name="VALUE">
+          <shadow type="math_number" id="L%Qh4Q;Rb,pPK~a`aehC">
+            <field name="NUM">0</field>
+          </shadow>
+          <block type="text">
+            <field name="TEXT">No longer do this auto-check, since will interfere with other bots with same default.</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="math_modulo" disabled="true" x="2369" y="925">
+    <value name="DIVIDEND">
+      <shadow type="math_number" id="i$+j$?FwsT2V_R8?@z!]">
+        <field name="NUM">0</field>
+      </shadow>
+      <block type="variables_get">
+        <field name="VAR" id="J*fbM:[jG[sMB}1dQbwj" variabletype="">groupChannel_Int</field>
+      </block>
+    </value>
+    <value name="DIVISOR">
+      <shadow type="math_number">
+        <field name="NUM">5</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="device_gesture_event" x="1149" y="1085">
+    <field name="NAME">Gesture.TiltRight</field>
+    <statement name="HANDLER">
+      <block type="radio_datagram_send_string">
+        <value name="msg">
+          <shadow type="text">
+            <field name="TEXT">tr</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="device_show_leds">
+            <field name="LEDS">`
+        . . # . . 
+        . . # # . 
+        . . # # # 
+        . . # # . 
+        . . # . .
+        `
+            </field>
+            <next>
+              <block type="device_play_note">
+                <value name="note">
+                  <shadow type="device_note">
+                    <field name="name">262</field>
+                  </shadow>
+                </value>
+                <value name="duration">
+                  <shadow type="device_beat">
+                    <field name="fraction">BeatFraction.Half</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="device_play_note">
+                    <value name="note">
+                      <shadow type="device_note">
+                        <field name="name">392</field>
+                      </shadow>
+                    </value>
+                    <value name="duration">
+                      <shadow type="device_beat">
+                        <field name="fraction">BeatFraction.Half</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="device_print_message" disabled="true" x="2368" y="1035">
+    <value name="text">
+      <shadow type="text">
+        <field name="TEXT">Tx:</field>
+      </shadow>
+    </value>
+    <next>
+      <block type="device_show_number" disabled="true">
+        <value name="number">
+          <block type="variables_get">
+            <field name="VAR" id="J*fbM:[jG[sMB}1dQbwj" variabletype="">groupChannel_Int</field>
+          </block>
+        </value>
+      </block>
+    </next>
+  </block>
+  <block type="procedures_defnoreturn" x="1733" y="1161">
+    <field name="NAME">RadioNetwork_Setup</field>
+    <field name="PARAMS"></field>
+    <statement name="STACK">
+      <block type="radio_set_transmit_power">
+        <value name="power">
+          <shadow type="math_number">
+            <field name="NUM">7</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="radio_set_group">
+            <value name="ID">
+              <block type="variables_get">
+                <field name="VAR" id="J*fbM:[jG[sMB}1dQbwj" variabletype="">groupChannel_Int</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="math_js_op" disabled="true" x="2318" y="1155">
+    <mutation op-type="infix"></mutation>
+    <field name="OP">idiv</field>
+    <value name="ARG0">
+      <shadow type="math_number" id="~EC+xa608F8}ar1w.Ekf">
+        <field name="NUM">0</field>
+      </shadow>
+      <block type="variables_get">
+        <field name="VAR" id="J*fbM:[jG[sMB}1dQbwj" variabletype="">groupChannel_Int</field>
+      </block>
+    </value>
+    <value name="ARG1">
+      <shadow type="math_number">
+        <field name="NUM">5</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="device_print_message" disabled="true" x="2222" y="1221">
+    <value name="text">
+      <shadow type="text">
+        <field name="TEXT">Rx:</field>
+      </shadow>
+    </value>
+    <next>
+      <block type="device_show_number" disabled="true">
+        <value name="number">
+          <block type="variables_get">
+            <field name="VAR" id="4~p?fzYSjDY;(Zd,akYw" variabletype="">receivedNumberIn</field>
+          </block>
+        </value>
+      </block>
+    </next>
+  </block>
+  <block type="logic_negate" disabled="true" x="2237" y="1368"></block>
+  <block type="device_play_note" disabled="true" x="2430" y="1363">
+    <value name="note">
+      <shadow type="device_note">
+        <field name="name">262</field>
+      </shadow>
+    </value>
+    <value name="duration">
+      <shadow type="device_beat">
+        <field name="fraction">BeatFraction.Whole</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="logic_negate" disabled="true" x="1898" y="1393"></block>
+  <block type="device_gesture_event" x="1150" y="1551">
+    <field name="NAME">Gesture.TiltLeft</field>
+    <statement name="HANDLER">
+      <block type="radio_datagram_send_string">
+        <value name="msg">
+          <shadow type="text">
+            <field name="TEXT">tl</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="device_show_leds">
+            <field name="LEDS">`
+        . . # . . 
+        . # # . . 
+        # # # . . 
+        . # # . . 
+        . . # . .
+        `
+            </field>
+            <next>
+              <block type="device_play_note">
+                <value name="note">
+                  <shadow type="device_note">
+                    <field name="name">392</field>
+                  </shadow>
+                </value>
+                <value name="duration">
+                  <shadow type="device_beat">
+                    <field name="fraction">BeatFraction.Half</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="device_play_note">
+                    <value name="note">
+                      <shadow type="device_note">
+                        <field name="name">262</field>
+                      </shadow>
+                    </value>
+                    <value name="duration">
+                      <shadow type="device_beat">
+                        <field name="fraction">BeatFraction.Half</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="device_show_leds" disabled="true" x="4324" y="1388">
+    <field name="LEDS">`
+        # . . . # 
+        . . . . . 
+        . . . . . 
+        . . . . . 
+        # . . . #
+        `
+    </field>
+  </block>
+  <block type="radio_datagram_send" disabled="true" x="1816" y="1522">
+    <value name="value">
+      <block type="variables_get">
+        <field name="VAR" id="J*fbM:[jG[sMB}1dQbwj" variabletype="">groupChannel_Int</field>
+      </block>
+    </value>
+  </block>
+  <block type="device_pause" disabled="true" x="715" y="1654">
+    <value name="pause">
+      <shadow type="timePicker">
+        <field name="ms">1000</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="device_forever" x="4049" y="1656">
+    <statement name="HANDLER">
+      <block type="controls_if">
+        <comment pinned="true" h="97" w="207">For 'mode_Config_On'</comment>
+        <value name="IF0">
+          <shadow type="logic_boolean" id="7c=AtcPW7PZu0W;JT[w+">
+            <field name="BOOL">TRUE</field>
+          </shadow>
+          <block type="variables_get">
+            <field name="VAR" id="d~eK)^)AOkOR8wD7G1jv" variabletype="">mode_Config_On</field>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_if">
+            <mutation elseif="8" else="1"></mutation>
+            <value name="IF0">
+              <shadow type="logic_boolean" id="NcagX_D5]ITERj+ImX{u">
+                <field name="BOOL">TRUE</field>
+              </shadow>
+              <block type="gamePad_keyState">
+                <field name="button">GamerBitPin.P14</field>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="controls_if">
+                <mutation elseif="1" else="1"></mutation>
+                <value name="IF0">
+                  <shadow type="logic_boolean" id="@oOl|@7Fi^~8/;jgp:~M">
+                    <field name="BOOL">TRUE</field>
+                  </shadow>
+                  <block type="gamePad_keyState">
+                    <field name="button">GamerBitPin.P8</field>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="radio_datagram_send_string">
+                    <value name="msg">
+                      <shadow type="text">
+                        <field name="TEXT">clu</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="device_show_leds">
+                        <field name="LEDS">`
+        . # . . . 
+        . # . . . 
+        . # . . . 
+        . . . . . 
+        . . . . .
+        `
+                        </field>
+                        <next>
+                          <block type="device_play_note">
+                            <value name="note">
+                              <shadow type="device_note">
+                                <field name="name">659</field>
+                              </shadow>
+                            </value>
+                            <value name="duration">
+                              <shadow type="device_beat">
+                                <field name="fraction">BeatFraction.Whole</field>
+                              </shadow>
+                            </value>
+                            <next>
+                              <block type="device_play_note">
+                                <value name="note">
+                                  <shadow type="device_note">
+                                    <field name="name">784</field>
+                                  </shadow>
+                                </value>
+                                <value name="duration">
+                                  <shadow type="device_beat">
+                                    <field name="fraction">BeatFraction.Whole</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="gamePad_keyState">
+                    <field name="button">GamerBitPin.P13</field>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="radio_datagram_send_string">
+                    <value name="msg">
+                      <shadow type="text">
+                        <field name="TEXT">cld</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="device_show_leds">
+                        <field name="LEDS">`
+        . . . . . 
+        . . . . . 
+        . # . . . 
+        . # . . . 
+        . # . . .
+        `
+                        </field>
+                        <next>
+                          <block type="device_play_note">
+                            <value name="note">
+                              <shadow type="device_note">
+                                <field name="name">784</field>
+                              </shadow>
+                            </value>
+                            <value name="duration">
+                              <shadow type="device_beat">
+                                <field name="fraction">BeatFraction.Whole</field>
+                              </shadow>
+                            </value>
+                            <next>
+                              <block type="device_play_note">
+                                <value name="note">
+                                  <shadow type="device_note">
+                                    <field name="name">659</field>
+                                  </shadow>
+                                </value>
+                                <value name="duration">
+                                  <shadow type="device_beat">
+                                    <field name="fraction">BeatFraction.Whole</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="radio_datagram_send_string">
+                    <value name="msg">
+                      <shadow type="text">
+                        <field name="TEXT">cl</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="device_show_leds">
+                        <field name="LEDS">`
+        . . . . . 
+        . . . . . 
+        . # . . . 
+        . . . . . 
+        . . . . .
+        `
+                        </field>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+            <value name="IF1">
+              <block type="gamePad_keyState">
+                <field name="button">GamerBitPin.P15</field>
+              </block>
+            </value>
+            <statement name="DO1">
+              <block type="controls_if">
+                <mutation elseif="1" else="1"></mutation>
+                <value name="IF0">
+                  <shadow type="logic_boolean" id="@oOl|@7Fi^~8/;jgp:~M">
+                    <field name="BOOL">TRUE</field>
+                  </shadow>
+                  <block type="gamePad_keyState">
+                    <field name="button">GamerBitPin.P8</field>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="radio_datagram_send_string">
+                    <value name="msg">
+                      <shadow type="text">
+                        <field name="TEXT">cru</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="device_show_leds">
+                        <field name="LEDS">`
+        . . . # . 
+        . . . # . 
+        . . . # . 
+        . . . . . 
+        . . . . .
+        `
+                        </field>
+                        <next>
+                          <block type="device_play_note">
+                            <value name="note">
+                              <shadow type="device_note">
+                                <field name="name">659</field>
+                              </shadow>
+                            </value>
+                            <value name="duration">
+                              <shadow type="device_beat">
+                                <field name="fraction">BeatFraction.Whole</field>
+                              </shadow>
+                            </value>
+                            <next>
+                              <block type="device_play_note">
+                                <value name="note">
+                                  <shadow type="device_note">
+                                    <field name="name">784</field>
+                                  </shadow>
+                                </value>
+                                <value name="duration">
+                                  <shadow type="device_beat">
+                                    <field name="fraction">BeatFraction.Whole</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="gamePad_keyState">
+                    <field name="button">GamerBitPin.P13</field>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="radio_datagram_send_string">
+                    <value name="msg">
+                      <shadow type="text">
+                        <field name="TEXT">crd</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="device_show_leds">
+                        <field name="LEDS">`
+        . . . . . 
+        . . . . . 
+        . . . # . 
+        . . . # . 
+        . . . # .
+        `
+                        </field>
+                        <next>
+                          <block type="device_play_note">
+                            <value name="note">
+                              <shadow type="device_note">
+                                <field name="name">784</field>
+                              </shadow>
+                            </value>
+                            <value name="duration">
+                              <shadow type="device_beat">
+                                <field name="fraction">BeatFraction.Whole</field>
+                              </shadow>
+                            </value>
+                            <next>
+                              <block type="device_play_note">
+                                <value name="note">
+                                  <shadow type="device_note">
+                                    <field name="name">659</field>
+                                  </shadow>
+                                </value>
+                                <value name="duration">
+                                  <shadow type="device_beat">
+                                    <field name="fraction">BeatFraction.Whole</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="radio_datagram_send_string">
+                    <value name="msg">
+                      <shadow type="text">
+                        <field name="TEXT">cr</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="device_show_leds">
+                        <field name="LEDS">`
+        . . . . . 
+        . . . . . 
+        . . . # . 
+        . . . . . 
+        . . . . .
+        `
+                        </field>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+            <value name="IF2">
+              <block type="gamePad_keyState">
+                <field name="button">GamerBitPin.P8</field>
+              </block>
+            </value>
+            <statement name="DO2">
+              <block type="radio_datagram_send_string">
+                <value name="msg">
+                  <shadow type="text">
+                    <field name="TEXT">cu</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="device_show_leds">
+                    <field name="LEDS">`
+        . . . . . 
+        . . # . . 
+        . # # # . 
+        . . # . . 
+        . . # . .
+        `
+                    </field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF3">
+              <block type="gamePad_keyState">
+                <field name="button">GamerBitPin.P13</field>
+              </block>
+            </value>
+            <statement name="DO3">
+              <block type="radio_datagram_send_string">
+                <value name="msg">
+                  <shadow type="text">
+                    <field name="TEXT">cd</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="device_show_leds">
+                    <field name="LEDS">`
+        . . # . . 
+        . . # . . 
+        . # # # . 
+        . . # . . 
+        . . . . .
+        `
+                    </field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF4">
+              <block type="device_get_button2">
+                <field name="NAME">Button.AB</field>
+              </block>
+            </value>
+            <statement name="DO4">
+              <block type="variables_set">
+                <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+                <value name="VALUE">
+                  <shadow type="math_number" id="knU5ocZ@Wz4#G_ex34h~">
+                    <field name="NUM">0</field>
+                  </shadow>
+                  <block type="text">
+                    <field name="TEXT">Request Bot to Show Power for Both Wheel Motors</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="radio_datagram_send_string">
+                    <value name="msg">
+                      <shadow type="text">
+                        <field name="TEXT">cab</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="device_show_leds">
+                        <field name="LEDS">`
+        . . . . . 
+        . # . # . 
+        . # . # . 
+        . # . # . 
+        . . . . .
+        `
+                        </field>
+                        <next>
+                          <block type="variables_set">
+                            <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+                            <value name="VALUE">
+                              <shadow type="math_number" id="a9jWVrXL;ds4cMLF:K(~">
+                                <field name="NUM">0</field>
+                              </shadow>
+                              <block type="text">
+                                <field name="TEXT">Pause 3000ms(min) to prevent multiple send of this message due to scroll-text on bot-side</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="device_pause">
+                                <value name="pause">
+                                  <shadow type="math_number">
+                                    <field name="NUM">3000</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF5">
+              <block type="device_get_button2">
+                <field name="NAME">Button.A</field>
+                <comment pinned="true" h="167" w="325">Placed under 'mode_Config' since DfRobotGamePad case can accidentally press Button-A while in 'mode_Run'</comment>
+              </block>
+            </value>
+            <statement name="DO5">
+              <block type="variables_change">
+                <field name="VAR" id="J*fbM:[jG[sMB}1dQbwj" variabletype="">groupChannel_Int</field>
+                <value name="VALUE">
+                  <shadow type="math_number">
+                    <field name="NUM">-1</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="controls_if">
+                    <value name="IF0">
+                      <shadow type="logic_boolean" id="FqN3faPBK!$,;dG9]wKo">
+                        <field name="BOOL">TRUE</field>
+                      </shadow>
+                      <block type="logic_compare">
+                        <field name="OP">LT</field>
+                        <value name="A">
+                          <shadow type="math_number" id="lbH}z[fC$$2Qcy|tm~p|">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="variables_get">
+                            <field name="VAR" id="J*fbM:[jG[sMB}1dQbwj" variabletype="">groupChannel_Int</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <shadow type="math_number" id="a~Ix(P26aq_J(:]?|AoA">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="variables_get">
+                            <field name="VAR" id="*q]Xu8Mxg5KCUPJ7*deJ" variabletype="">groupChannel_Int_Min</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set">
+                        <field name="VAR" id="J*fbM:[jG[sMB}1dQbwj" variabletype="">groupChannel_Int</field>
+                        <value name="VALUE">
+                          <shadow type="math_number" id="WxRBH]=5NYGiSoGNZ)EI">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="variables_get">
+                            <field name="VAR" id="L}8{67ZN1Yp=CDCT8uTY" variabletype="">groupChannel_Int_Max</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="radio_set_group">
+                        <value name="ID">
+                          <block type="variables_get">
+                            <field name="VAR" id="J*fbM:[jG[sMB}1dQbwj" variabletype="">groupChannel_Int</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set">
+                            <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+                            <value name="VALUE">
+                              <shadow type="math_number" id="BDiQ@tG5K4VrF9Tp`H5?">
+                                <field name="NUM">0</field>
+                              </shadow>
+                              <block type="text">
+                                <field name="TEXT">To Force Display Show</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set">
+                                <field name="VAR" id="Er^/n)IiXbk)%x~$%*0Q" variabletype="">groupChannelShow_Countdown</field>
+                                <value name="VALUE">
+                                  <shadow type="math_number">
+                                    <field name="NUM">0</field>
+                                  </shadow>
+                                </value>
+                                <next>
+                                  <block type="device_play_note">
+                                    <value name="note">
+                                      <shadow type="device_note">
+                                        <field name="name">196</field>
+                                      </shadow>
+                                    </value>
+                                    <value name="duration">
+                                      <shadow type="device_beat">
+                                        <field name="fraction">BeatFraction.Whole</field>
+                                      </shadow>
+                                    </value>
+                                    <next>
+                                      <block type="device_play_note">
+                                        <value name="note">
+                                          <shadow type="device_note">
+                                            <field name="name">165</field>
+                                          </shadow>
+                                        </value>
+                                        <value name="duration">
+                                          <shadow type="device_beat">
+                                            <field name="fraction">BeatFraction.Whole</field>
+                                          </shadow>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF6">
+              <block type="device_get_button2">
+                <field name="NAME">Button.B</field>
+                <comment pinned="true" h="140" w="318">Placed under 'mode_Config' since DfRobotGamePad case can accidentally press Button-A while in 'mode_Run'</comment>
+              </block>
+            </value>
+            <statement name="DO6">
+              <block type="variables_change">
+                <field name="VAR" id="J*fbM:[jG[sMB}1dQbwj" variabletype="">groupChannel_Int</field>
+                <value name="VALUE">
+                  <shadow type="math_number">
+                    <field name="NUM">1</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="controls_if">
+                    <value name="IF0">
+                      <shadow type="logic_boolean" id="FqN3faPBK!$,;dG9]wKo">
+                        <field name="BOOL">TRUE</field>
+                      </shadow>
+                      <block type="logic_compare">
+                        <field name="OP">GT</field>
+                        <value name="A">
+                          <shadow type="math_number" id="lbH}z[fC$$2Qcy|tm~p|">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="variables_get">
+                            <field name="VAR" id="J*fbM:[jG[sMB}1dQbwj" variabletype="">groupChannel_Int</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <shadow type="math_number" id="a~Ix(P26aq_J(:]?|AoA">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="variables_get">
+                            <field name="VAR" id="L}8{67ZN1Yp=CDCT8uTY" variabletype="">groupChannel_Int_Max</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set">
+                        <field name="VAR" id="J*fbM:[jG[sMB}1dQbwj" variabletype="">groupChannel_Int</field>
+                        <value name="VALUE">
+                          <shadow type="math_number" id="WxRBH]=5NYGiSoGNZ)EI">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="variables_get">
+                            <field name="VAR" id="*q]Xu8Mxg5KCUPJ7*deJ" variabletype="">groupChannel_Int_Min</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="radio_set_group">
+                        <value name="ID">
+                          <block type="variables_get">
+                            <field name="VAR" id="J*fbM:[jG[sMB}1dQbwj" variabletype="">groupChannel_Int</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set">
+                            <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+                            <value name="VALUE">
+                              <shadow type="math_number" id="BDiQ@tG5K4VrF9Tp`H5?">
+                                <field name="NUM">0</field>
+                              </shadow>
+                              <block type="text">
+                                <field name="TEXT">To Force Display Show</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set">
+                                <field name="VAR" id="Er^/n)IiXbk)%x~$%*0Q" variabletype="">groupChannelShow_Countdown</field>
+                                <value name="VALUE">
+                                  <shadow type="math_number">
+                                    <field name="NUM">0</field>
+                                  </shadow>
+                                </value>
+                                <next>
+                                  <block type="device_play_note">
+                                    <value name="note">
+                                      <shadow type="device_note">
+                                        <field name="name">165</field>
+                                      </shadow>
+                                    </value>
+                                    <value name="duration">
+                                      <shadow type="device_beat">
+                                        <field name="fraction">BeatFraction.Whole</field>
+                                      </shadow>
+                                    </value>
+                                    <next>
+                                      <block type="device_play_note">
+                                        <value name="note">
+                                          <shadow type="device_note">
+                                            <field name="name">196</field>
+                                          </shadow>
+                                        </value>
+                                        <value name="duration">
+                                          <shadow type="device_beat">
+                                            <field name="fraction">BeatFraction.Whole</field>
+                                          </shadow>
+                                        </value>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF7">
+              <block type="gamePad_keyState">
+                <field name="button">GamerBitPin.P1</field>
+              </block>
+            </value>
+            <statement name="DO7">
+              <block type="variables_set">
+                <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+                <value name="VALUE">
+                  <shadow type="math_number" id="Mz$w;)hnKOj/i:OF*Zms">
+                    <field name="NUM">0</field>
+                  </shadow>
+                  <block type="text">
+                    <field name="TEXT">To decrease 'IdleDelay' with more Dropped-Packets Sensitivty</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="radio_datagram_send_string">
+                    <value name="msg">
+                      <shadow type="text">
+                        <field name="TEXT">cx</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="device_show_leds">
+                        <field name="LEDS">`
+        . . . . . 
+        . # . # . 
+        . . # . . 
+        . . # . . 
+        . . . . .
+        `
+                        </field>
+                        <next>
+                          <block type="device_play_note">
+                            <value name="note">
+                              <shadow type="device_note">
+                                <field name="name">196</field>
+                              </shadow>
+                            </value>
+                            <value name="duration">
+                              <shadow type="device_beat">
+                                <field name="fraction">BeatFraction.Whole</field>
+                              </shadow>
+                            </value>
+                            <next>
+                              <block type="device_play_note">
+                                <value name="note">
+                                  <shadow type="device_note">
+                                    <field name="name">165</field>
+                                  </shadow>
+                                </value>
+                                <value name="duration">
+                                  <shadow type="device_beat">
+                                    <field name="fraction">BeatFraction.Whole</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <value name="IF8">
+              <block type="gamePad_keyState">
+                <field name="button">GamerBitPin.P2</field>
+              </block>
+            </value>
+            <statement name="DO8">
+              <block type="variables_set">
+                <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+                <value name="VALUE">
+                  <shadow type="math_number" id="Mz$w;)hnKOj/i:OF*Zms">
+                    <field name="NUM">0</field>
+                  </shadow>
+                  <block type="text">
+                    <field name="TEXT">To increase 'IdleDelay' with less Dropped-Packets Sensitivty</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="radio_datagram_send_string">
+                    <value name="msg">
+                      <shadow type="text">
+                        <field name="TEXT">cy</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="device_show_leds">
+                        <field name="LEDS">`
+        # . . . # 
+        . # . # . 
+        . . # . . 
+        . . # . . 
+        . . # . .
+        `
+                        </field>
+                        <next>
+                          <block type="device_play_note">
+                            <value name="note">
+                              <shadow type="device_note">
+                                <field name="name">165</field>
+                              </shadow>
+                            </value>
+                            <value name="duration">
+                              <shadow type="device_beat">
+                                <field name="fraction">BeatFraction.Whole</field>
+                              </shadow>
+                            </value>
+                            <next>
+                              <block type="device_play_note">
+                                <value name="note">
+                                  <shadow type="device_note">
+                                    <field name="name">196</field>
+                                  </shadow>
+                                </value>
+                                <value name="duration">
+                                  <shadow type="device_beat">
+                                    <field name="fraction">BeatFraction.Whole</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="variables_set">
+                <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+                <value name="VALUE">
+                  <shadow type="math_number" id="ge!m+54G^yl=;%p63)K(">
+                    <field name="NUM">0</field>
+                  </shadow>
+                  <block type="text">
+                    <field name="TEXT">Default Condition if all the above fails</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_repeat_ext">
+                    <value name="TIMES">
+                      <shadow type="math_whole_number">
+                        <field name="NUM">1</field>
+                      </shadow>
+                    </value>
+                    <statement name="DO">
+                      <block type="variables_change">
+                        <field name="VAR" id="Er^/n)IiXbk)%x~$%*0Q" variabletype="">groupChannelShow_Countdown</field>
+                        <value name="VALUE">
+                          <shadow type="math_number">
+                            <field name="NUM">-1</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="controls_repeat_ext">
+                            <value name="TIMES">
+                              <shadow type="math_whole_number">
+                                <field name="NUM">0</field>
+                              </shadow>
+                            </value>
+                            <statement name="DO">
+                              <block type="serial_writevalue">
+                                <value name="name">
+                                  <shadow type="text">
+                                    <field name="TEXT">groupChannel</field>
+                                  </shadow>
+                                </value>
+                                <value name="value">
+                                  <shadow type="math_number" id="r5p}0RsgW_4)s_b-##XB">
+                                    <field name="NUM">0</field>
+                                  </shadow>
+                                  <block type="variables_get">
+                                    <field name="VAR" id="Er^/n)IiXbk)%x~$%*0Q" variabletype="">groupChannelShow_Countdown</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="controls_if">
+                                <mutation else="1"></mutation>
+                                <value name="IF0">
+                                  <shadow type="logic_boolean" id="d8C0]24XPh((NLEkzNR}">
+                                    <field name="BOOL">TRUE</field>
+                                  </shadow>
+                                  <block type="logic_compare">
+                                    <field name="OP">LTE</field>
+                                    <value name="A">
+                                      <shadow type="math_number" id="_n!^@AYJ{hfm2HrWK1Z-">
+                                        <field name="NUM">0</field>
+                                      </shadow>
+                                      <block type="variables_get">
+                                        <field name="VAR" id="Er^/n)IiXbk)%x~$%*0Q" variabletype="">groupChannelShow_Countdown</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <shadow type="math_number">
+                                        <field name="NUM">0</field>
+                                      </shadow>
+                                    </value>
+                                  </block>
+                                </value>
+                                <statement name="DO0">
+                                  <block type="variables_set">
+                                    <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+                                    <value name="VALUE">
+                                      <shadow type="math_number" id="Mb!d/q/hZu1X$It@?62?">
+                                        <field name="NUM">0</field>
+                                      </shadow>
+                                      <block type="text">
+                                        <field name="TEXT">Only Call this Function once-in-a-while to prevent clobbering other graphics, thus this countdown used</field>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="procedures_callnoreturn">
+                                        <mutation name="GroupChannel_Show"></mutation>
+                                        <field name="NAME">GroupChannel_Show</field>
+                                        <next>
+                                          <block type="variables_set">
+                                            <field name="VAR" id="Er^/n)IiXbk)%x~$%*0Q" variabletype="">groupChannelShow_Countdown</field>
+                                            <value name="VALUE">
+                                              <shadow type="math_number" id="s]lH$~q24+:P98)e1_NI">
+                                                <field name="NUM">0</field>
+                                              </shadow>
+                                              <block type="variables_get">
+                                                <field name="VAR" id="5YlyCo+!Vp|IS*p[js[T" variabletype="">groupChannelShow_Countdown_Max</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </statement>
+                                <statement name="ELSE">
+                                  <block type="device_show_leds">
+                                    <field name="LEDS">`
+        # . . . # 
+        . . . . . 
+        . . . . . 
+        . . . . . 
+        # . . . #
+        `
+                                    </field>
+                                  </block>
+                                </statement>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_callnoreturn" disabled="true" x="1810" y="1780">
+    <mutation name="GroupChannel_Show"></mutation>
+    <field name="NAME">GroupChannel_Show</field>
+  </block>
+  <block type="device_gesture_event" x="692" y="1847">
+    <field name="NAME">Gesture.Shake</field>
+    <statement name="HANDLER">
+      <block type="radio_datagram_send_string">
+        <value name="msg">
+          <shadow type="text">
+            <field name="TEXT">s</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="basic_show_icon">
+            <field name="i">IconNames.No</field>
+            <next>
+              <block type="device_pause">
+                <value name="pause">
+                  <shadow type="timePicker">
+                    <field name="ms">1000</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="device_play_note">
+                    <value name="note">
+                      <shadow type="device_note">
+                        <field name="name">392</field>
+                      </shadow>
+                    </value>
+                    <value name="duration">
+                      <shadow type="device_beat">
+                        <field name="fraction">BeatFraction.Half</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="device_play_note">
+                        <value name="note">
+                          <shadow type="device_note">
+                            <field name="name">330</field>
+                          </shadow>
+                        </value>
+                        <value name="duration">
+                          <shadow type="device_beat">
+                            <field name="fraction">BeatFraction.Half</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="device_play_note">
+                            <value name="note">
+                              <shadow type="device_note">
+                                <field name="name">262</field>
+                              </shadow>
+                            </value>
+                            <value name="duration">
+                              <shadow type="device_beat">
+                                <field name="fraction">BeatFraction.Half</field>
+                              </shadow>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="device_pause" disabled="true" x="1735" y="1898">
+    <value name="pause">
+      <shadow type="timePicker">
+        <field name="ms">1000</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="device_pause" disabled="true" x="3391" y="1890">
+    <value name="pause">
+      <shadow type="math_number">
+        <field name="NUM">100</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="device_play_note" disabled="true" x="3357" y="1962">
+    <value name="note">
+      <shadow type="device_note">
+        <field name="name">262</field>
+      </shadow>
+    </value>
+    <value name="duration">
+      <shadow type="device_beat">
+        <field name="fraction">BeatFraction.Half</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="device_print_message" disabled="true" x="2492" y="2087">
+    <value name="text">
+      <shadow type="text">
+        <field name="TEXT">Tx:</field>
+      </shadow>
+    </value>
+    <next>
+      <block type="device_show_number" disabled="true">
+        <value name="number">
+          <block type="variables_get">
+            <field name="VAR" id="J*fbM:[jG[sMB}1dQbwj" variabletype="">groupChannel_Int</field>
+          </block>
+        </value>
+      </block>
+    </next>
+  </block>
+  <block type="device_gesture_event" x="1210" y="2243">
+    <field name="NAME">Gesture.LogoDown</field>
+    <statement name="HANDLER">
+      <block type="radio_datagram_send_string">
+        <value name="msg">
+          <shadow type="text">
+            <field name="TEXT">sd</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="device_show_leds">
+            <field name="LEDS">`
+        . . # . . 
+        . # # # . 
+        # # # # # 
+        . . . . . 
+        . . . . .
+        `
+            </field>
+            <next>
+              <block type="device_play_note">
+                <value name="note">
+                  <shadow type="device_note">
+                    <field name="name">262</field>
+                  </shadow>
+                </value>
+                <value name="duration">
+                  <shadow type="device_beat">
+                    <field name="fraction">BeatFraction.Half</field>
+                  </shadow>
+                </value>
+                <next>
+                  <block type="device_play_note">
+                    <value name="note">
+                      <shadow type="device_note">
+                        <field name="name">523</field>
+                      </shadow>
+                    </value>
+                    <value name="duration">
+                      <shadow type="device_beat">
+                        <field name="fraction">BeatFraction.Half</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" x="1846" y="2239">
+    <field name="NAME">GroupChannel_Show</field>
+    <field name="PARAMS"></field>
+    <statement name="STACK">
+      <block type="device_clear_display">
+        <next>
+          <block type="variables_set">
+            <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+            <value name="VALUE">
+              <shadow type="math_number" id="EHeDxKy^0=t)w^Fg]er/">
+                <field name="NUM">0</field>
+              </shadow>
+              <block type="text">
+                <field name="TEXT">'groupChannel_Int' is Base-1 while 'index' and 'plot' is Base-0</field>
+              </block>
+            </value>
+            <next>
+              <block type="pxt_controls_for">
+                <value name="VAR">
+                  <shadow type="variables_get_reporter">
+                    <field name="VAR" id="%MXln7d_cpd96X{=m69O" variabletype="">index</field>
+                  </shadow>
+                </value>
+                <value name="TO">
+                  <shadow type="math_whole_number" id="oS=muO.82Y0J5Y2nLB;U">
+                    <field name="NUM">4</field>
+                  </shadow>
+                  <block type="math_arithmetic">
+                    <field name="OP">MINUS</field>
+                    <value name="A">
+                      <shadow type="math_number" id="_@=it#_O]Gh.gTIx-,QK">
+                        <field name="NUM">0</field>
+                      </shadow>
+                      <block type="variables_get">
+                        <field name="VAR" id="J*fbM:[jG[sMB}1dQbwj" variabletype="">groupChannel_Int</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <shadow type="math_number">
+                        <field name="NUM">1</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO">
+                  <block type="device_plot">
+                    <value name="x">
+                      <shadow type="math_number_minmax" id="^_xy)|.pTgcu`#Gzz#?.">
+                        <mutation min="0" max="4" label="X" precision="1"></mutation>
+                        <field name="SLIDER">0</field>
+                      </shadow>
+                      <block type="math_modulo">
+                        <value name="DIVIDEND">
+                          <shadow type="math_number" id="i$+j$?FwsT2V_R8?@z!]">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="variables_get">
+                            <field name="VAR" id="%MXln7d_cpd96X{=m69O" variabletype="">index</field>
+                          </block>
+                        </value>
+                        <value name="DIVISOR">
+                          <shadow type="math_number">
+                            <field name="NUM">5</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="y">
+                      <shadow type="math_number_minmax" id="f!BhLJ=pVOId-iXj8p^D">
+                        <mutation min="0" max="4" label="Y" precision="1"></mutation>
+                        <field name="SLIDER">0</field>
+                      </shadow>
+                      <block type="math_js_op">
+                        <mutation op-type="infix"></mutation>
+                        <field name="OP">idiv</field>
+                        <value name="ARG0">
+                          <shadow type="math_number" id="c65NFGpaZN8qF4kZAig$">
+                            <field name="NUM">0</field>
+                          </shadow>
+                          <block type="variables_get">
+                            <field name="VAR" id="%MXln7d_cpd96X{=m69O" variabletype="">index</field>
+                          </block>
+                        </value>
+                        <value name="ARG1">
+                          <shadow type="math_number">
+                            <field name="NUM">5</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="device_pause">
+                    <value name="pause">
+                      <shadow type="timePicker">
+                        <field name="ms">1000</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="pxt_controls_for" disabled="true" x="2447" y="2525">
+    <value name="VAR">
+      <shadow type="variables_get_reporter">
+        <field name="VAR" id="%MXln7d_cpd96X{=m69O" variabletype="">index</field>
+      </shadow>
+    </value>
+    <value name="TO">
+      <shadow type="math_whole_number" id="iUC_@l(-u+NyB)e-_=8X">
+        <field name="NUM">4</field>
+      </shadow>
+      <block type="variables_get">
+        <field name="VAR" id="J*fbM:[jG[sMB}1dQbwj" variabletype="">groupChannel_Int</field>
+      </block>
+    </value>
+  </block>
+  <block type="controls_repeat_ext" disabled="true" x="1653" y="2637">
+    <value name="TIMES">
+      <shadow type="math_whole_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <statement name="DO">
+      <block type="device_plot">
+        <value name="x">
+          <shadow type="math_number_minmax">
+            <mutation min="0" max="4" label="X" precision="1"></mutation>
+            <field name="SLIDER">0</field>
+          </shadow>
+        </value>
+        <value name="y">
+          <shadow type="math_number_minmax">
+            <mutation min="0" max="4" label="Y" precision="1"></mutation>
+            <field name="SLIDER">0</field>
+          </shadow>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="controls_repeat_ext" disabled="true" x="2111" y="2643">
+    <value name="TIMES">
+      <shadow type="math_whole_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <statement name="DO">
+      <block type="device_unplot">
+        <value name="x">
+          <shadow type="math_number_minmax">
+            <mutation min="0" max="4" label="X" precision="1"></mutation>
+            <field name="SLIDER">0</field>
+          </shadow>
+        </value>
+        <value name="y">
+          <shadow type="math_number_minmax">
+            <mutation min="0" max="4" label="Y" precision="1"></mutation>
+            <field name="SLIDER">0</field>
+          </shadow>
+        </value>
+      </block>
+    </statement>
+  </block>
+  <block type="device_play_note" disabled="true" x="3363" y="2834">
+    <value name="note">
+      <shadow type="device_note">
+        <field name="name">262</field>
+      </shadow>
+    </value>
+    <value name="duration">
+      <shadow type="device_beat">
+        <field name="fraction">BeatFraction.Half</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="device_play_note" disabled="true" x="3277" y="3510">
+    <value name="note">
+      <shadow type="device_note">
+        <field name="name">262</field>
+      </shadow>
+    </value>
+    <value name="duration">
+      <shadow type="device_beat">
+        <field name="fraction">BeatFraction.Half</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="device_get_button2" disabled="true" x="2609" y="4829">
+    <field name="NAME">Button.A</field>
+  </block>
+  <block type="device_get_button2" disabled="true" x="2685" y="5322">
+    <field name="NAME">Button.B</field>
+  </block>
+  <block type="controls_repeat_ext" disabled="true" x="4649" y="5952">
+    <value name="TIMES">
+      <shadow type="math_whole_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="controls_repeat_ext" disabled="true" x="3181" y="10001">
+    <value name="TIMES">
+      <shadow type="math_whole_number">
+        <field name="NUM">1</field>
+      </shadow>
+    </value>
+    <statement name="DO">
+      <block type="variables_set">
+        <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+        <value name="VALUE">
+          <shadow type="math_number" id="Wc(`YL#BB,au*/c@_?+A">
+            <field name="NUM">0</field>
+          </shadow>
+          <block type="text">
+            <field name="TEXT">2018-0923: 01ms seems :(+, 5ms :)+, 10 ms :(+  </field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set">
+            <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+            <value name="VALUE">
+              <shadow type="math_number" id="Wc(`YL#BB,au*/c@_?+A">
+                <field name="NUM">0</field>
+              </shadow>
+              <block type="text">
+                <field name="TEXT">2018-0929: Remove Pause is best since BotReceiver processes msgs faster than ControllerTransmitter can send</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <next>
+      <block type="controls_repeat_ext" disabled="true">
+        <value name="TIMES">
+          <shadow type="math_whole_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <statement name="DO">
+          <block type="variables_change">
+            <field name="VAR" id="Er^/n)IiXbk)%x~$%*0Q" variabletype="">groupChannelShow_Countdown</field>
+            <value name="VALUE">
+              <shadow type="math_number">
+                <field name="NUM">-1</field>
+              </shadow>
+            </value>
+            <next>
+              <block type="controls_if">
+                <value name="IF0">
+                  <shadow type="logic_boolean" id="d8C0]24XPh((NLEkzNR}">
+                    <field name="BOOL">TRUE</field>
+                  </shadow>
+                  <block type="logic_compare">
+                    <field name="OP">LTE</field>
+                    <value name="A">
+                      <shadow type="math_number" id="_n!^@AYJ{hfm2HrWK1Z-">
+                        <field name="NUM">0</field>
+                      </shadow>
+                      <block type="variables_get">
+                        <field name="VAR" id="Er^/n)IiXbk)%x~$%*0Q" variabletype="">groupChannelShow_Countdown</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <shadow type="math_number">
+                        <field name="NUM">0</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="variables_set">
+                    <field name="VAR" id="Z-9t${Vs#2?fNod-GMTq" variabletype="">_commentUseOnly</field>
+                    <value name="VALUE">
+                      <shadow type="math_number" id="Mb!d/q/hZu1X$It@?62?">
+                        <field name="NUM">0</field>
+                      </shadow>
+                      <block type="text">
+                        <field name="TEXT">Only Call this Function once-in-a-while to prevent clobbering other graphics, thus this countdown used</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="procedures_callnoreturn">
+                        <mutation name="GroupChannel_Show"></mutation>
+                        <field name="NAME">GroupChannel_Show</field>
+                        <next>
+                          <block type="variables_set">
+                            <field name="VAR" id="Er^/n)IiXbk)%x~$%*0Q" variabletype="">groupChannelShow_Countdown</field>
+                            <value name="VALUE">
+                              <shadow type="math_number" id="s]lH$~q24+:P98)e1_NI">
+                                <field name="NUM">0</field>
+                              </shadow>
+                              <block type="variables_get">
+                                <field name="VAR" id="5YlyCo+!Vp|IS*p[js[T" variabletype="">groupChannelShow_Countdown_Max</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </next>
+  </block>
+  <block type="basic_show_icon" disabled="true" x="2410" y="10046">
+    <field name="i">IconNames.SmallDiamond</field>
+  </block>
+  <block type="logic_compare" disabled="true" x="2713" y="10144">
+    <field name="OP">LT</field>
+    <value name="A">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+    <value name="B">
+      <shadow type="math_number">
+        <field name="NUM">0</field>
+      </shadow>
+    </value>
+  </block>
+</xml>
