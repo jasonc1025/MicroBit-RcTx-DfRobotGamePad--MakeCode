@@ -1,5 +1,5 @@
 {
-    "name": "RcTx-DfRobotGamePad-2019-0113-0950-ND-14-TYJ-NoMsDelayToOverloadBot-DPadOnlyOkForCombo_XYPrefix-No05msecStop-NoInterrupt-GroupCh25-JumpWires-Ch_AB_Fix-SerialDebug-CustomCh25",
+    "name": "RcTx-DfRobotGamePad-2019-0112-1900-ND-FA-14-TYJ-NoMsDelayToOverloadBot-DPadOnlyOkForCombo_XYPrefix-No0msecStop-NoInterrupt-GroupCh25-JumpWires-Ch_AB_Fix-SerialDebug-CustomCh25",
     "dependencies": {
         "core": "*",
         "radio": "*",
